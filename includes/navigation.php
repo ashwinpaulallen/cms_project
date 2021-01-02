@@ -22,8 +22,27 @@
                         echo "<li> <a href='#'> ${cat_title} </a></li>";
                     }                
                 ?>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               <li> <a href="admin">Admin</a> </li>                
             </ul>
         </div>
+<!--
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+-->
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
