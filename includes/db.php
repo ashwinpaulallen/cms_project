@@ -15,8 +15,8 @@ if(!$connection) {
     die( 'Unable to Connect to Database');
 }
 
-function cat_nav_bar() {
-    
+function get_all_category() {
+
     $query = "SELECT * FROM categories";
     global $connection;
     $result = mysqli_query($connection, $query);
@@ -24,12 +24,23 @@ function cat_nav_bar() {
     if(!$result) {
         die('Unable to retrieve data from database' . mysqli.error($connection));
     }
+    
+    return $result;
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $cat_title = $row['cat_title'];
-        echo "<li> <a href='#'> ${cat_title} </a></li>";
+}
+
+function get_all_posts() {
+
+
+    $query = "SELECT * FROM posts";
+    global $connection; 
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to retrieve data from database' . mysqli.error($connection));
     }
     
+    return $result;
 }
 
 
