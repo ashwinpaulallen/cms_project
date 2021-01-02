@@ -22,7 +22,7 @@ function get_all_category() {
     $result = mysqli_query($connection, $query);
 
     if(!$result) {
-        die('Unable to retrieve data from database' . mysqli.error($connection));
+        die('Unable to retrieve all category from database' . mysqli.error($connection));
     }
     
     return $result;
@@ -37,11 +37,22 @@ function get_all_posts() {
     $result = mysqli_query($connection, $query);
 
     if(!$result) {
-        die('Unable to retrieve data from database' . mysqli.error($connection));
+        die('Unable to retrieve all posts from database' . mysqli.error($connection));
     }
     
     return $result;
 }
 
-
+function search_blog($search) {
+    
+    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%'";
+    global $connection; 
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to search data from database' . mysqli.error($connection));
+    }
+    
+    return $result;
+}
 ?>

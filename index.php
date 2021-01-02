@@ -16,16 +16,29 @@
 
             <!-- First Blog Post -->
             <?php 
-            
-                $result = get_all_posts();
+                if (isset($_POST['search_submit'])) {
+                    $search = $_POST['search'];
+                    $result = search_blog($search);
+                    
+                } else { 
+                    $result = get_all_posts();
+                }
+                    
+                if ($result != null) {
+                    $count = mysqli_num_rows($result);
+                    if ($count == 0){
+                        echo "<h1>No Posts found</h1>";
+                    }
+                }
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $post_title = $row['post_title'];
-                    $post_author = $row['post_author'];
-                    $post_date = $row['post_date'];
-                    $post_image = $row['post_image'];
-                    $post_content = $row['post_content'];            
-                    ?>
+                if ($result != null) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $post_title = $row['post_title'];
+                        $post_author = $row['post_author'];
+                        $post_date = $row['post_date'];
+                        $post_image = $row['post_image'];
+                        $post_content = $row['post_content'];            
+                        ?>
                     
                     <h2>
                         <a href="#"><?php echo $post_title ?></a>
@@ -41,7 +54,8 @@
                     <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     <hr>     
                     <?php
-                }     
+                    } 
+                }
             ?>
         </div>
         <!-- Blog Sidebar Widgets Column -->
