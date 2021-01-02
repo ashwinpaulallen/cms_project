@@ -1,4 +1,3 @@
-<?php include "db.php" ?>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -17,6 +16,7 @@
             <ul class="nav navbar-nav">
                 <?php 
                     $result = get_all_category(); 
+
                     while ($row = mysqli_fetch_assoc($result)) {
                         $cat_title = $row['cat_title'];
                         echo "<li> <a href='#'> ${cat_title} </a></li>";
