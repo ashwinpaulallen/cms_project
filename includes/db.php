@@ -29,6 +29,29 @@ function get_all_category() {
 
 }
 
+function add_category($cat_title) {
+    $query = "INSERT INTO categories(cat_title) VALUE ('{$cat_title}')";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Add New category to database' . mysqli.error($connection));
+    }
+    
+}
+
+function remove_category($cat_id) {
+    $query = "DELETE FROM categories WHERE cat_id = '{$cat_id}'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Delete category to database' . mysqli.error($connection));
+    } else {
+        header("Location: categories.php");
+    }
+}
+
 function get_all_posts() {
 
 
