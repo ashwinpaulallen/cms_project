@@ -90,6 +90,32 @@ function get_all_posts() {
     return $result;
 }
 
+function add_post($post) {
+    $query = "INSERT INTO posts(post_cat_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES";
+    $query .= "('{$post['cat_id']}','{$post['title']}','{$post['author']}',now(),'{$post['image']}','{$post['content']}','{$post['tags']}','{$post['comment_count']}','{$post['status']}')";
+    
+    global $connection; 
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to add post to database' . mysqli.error($connection));
+    } else {
+        header("Location: posts.php");
+    }
+}
+
+function remove_post($post_id) {
+    $query = "DELETE FROM posts WHERE post_id = '{$post_id}'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Delete category to database' . mysqli.error($connection));
+    } else {
+        header("Location: posts.php");
+    }
+}
+
 function search_blog($search) {
     
     $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%'";
