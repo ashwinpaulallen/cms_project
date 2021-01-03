@@ -35,4 +35,4 @@
     </div>
     <!-- /#page-wrapper -->
     
-    <?php include "includes/header.php"; ?>
+    <?php include "includes/footer.php"; ?>
