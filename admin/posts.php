@@ -22,15 +22,14 @@
                             case 'add_post':
                                 include "includes/addPost.php";
                                 break;
-                            case '2':
+                            case 'edit_post':
+                                include "includes/editPost.php";
                                 break;
                             default:
                                 include "includes/viewAllPosts.php";
                                 break;
                         }
                     ?>
-                    
-                    
                 </div>
             </div>
             <!-- /.row -->

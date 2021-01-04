@@ -12,7 +12,7 @@ if(isset($_POST['new_post'])) {
     $post['status'] = $_POST['status'];
     
     move_uploaded_file($post_image_temp, "../images/$post_image");
-    print_r($post);
+   
     add_post($post);
     
 }
@@ -25,8 +25,20 @@ if(isset($_POST['new_post'])) {
         <input type="text" class="form-control" name="title">
     </div>
     <div class="form-group">
-        <label for="cat_id">Category ID</label>
-        <input type="text" class="form-control" name="cat_id">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+        
+        <select class="custom-select" id="inputGroupSelect01" name="cat_id" >
+            <?php 
+                $cat_result = get_all_category();
+                
+                while ($cat_row = mysqli_fetch_assoc($cat_result)) {
+                    echo "<option value='{$cat_row['cat_id']}'> {$cat_row['cat_title']} </option>";
+                
+                }
+            ?>
+        </select>
+        </div>
     </div>
     <div class="form-group">
         <label for="author">Author</label>

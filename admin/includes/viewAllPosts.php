@@ -1,4 +1,4 @@
-
+<?php include "functions.php" ?>
 <h1 class="page-header">All Posts</h1>
 <table class="table table-bordered table-hover">
     <thead>
@@ -14,6 +14,7 @@
             <th class="text-center">Comments Count</th>
             <th class="text-center">Status</th>   
             <th class="text-center">Delete</th>                        
+            <th class="text-center">Modify</th>                        
         </tr>
     </thead>
     <tbody class="text-center">
@@ -23,7 +24,7 @@
         if ($result != null) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $post_id = $row['post_id'];
-                $post_cat_id = $row['post_cat_id'];
+                $post_cat_id = get_category_title_by_id($row['post_cat_id']);
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
@@ -46,6 +47,7 @@
             <th class="text-center"><?php echo $post_comment_count ?></th>
             <th class="text-center"><?php echo $post_status ?></th>
             <td><a href="posts.php?delete=<?php echo $post_id ?>" >Remove</a></td>
+            <td><a href="posts.php?s=edit_post&id=<?php echo $post_id ?>" >Edit</a></td>
 
         </tr>
         <?php }
