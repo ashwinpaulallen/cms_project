@@ -69,7 +69,6 @@ if(isset($_GET['id'])) {
 
 <?php 
     if(isset($_POST['edit_post'])) {
-        echo "EDIT post method";
         $post['post_id'] = $_POST['id'];
         $post['cat_id'] = $_POST['cat_id'];
         $post['title'] = $_POST['title'];

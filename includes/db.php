@@ -170,6 +170,29 @@ function remove_post($post_id) {
     }
 }
 
+function get_all_comments() {
+    $query = "SELECT * FROM comments";
+    global $connection; 
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to retrieve all posts from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
+function add_comment($comment) {
+    $query = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content, comment_date, comment_status) ";
+    $query .= "VALUE ('{$comment['post_id']}', '{$comment['author']}', '{$comment['email']}', '{$comment['content']}', now(), 'UnApproved')";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Add New category to database' . mysqli_error($connection));
+    }
+}
+
 function search_blog($search) {
     
     $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%'";
