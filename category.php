@@ -17,22 +17,13 @@
 
             <!-- First Blog Post -->
             <?php 
-                if (isset($_POST['search_submit'])) {
-                    $search = $_POST['search'];
-                    $result = search_blog($search);
-                    
-                } else { 
-                    $result = get_all_posts();
+                if (isset($_GET['id'])) {
+                    $cat_id = $_GET['id'];
+                    $result = get_posts_by_cat($cat_id);
                 }
-                    
-                if ($result != null) {
-                    $count = mysqli_num_rows($result);
-                    if ($count == 0){
-                        echo "<h1>No Posts found</h1>";
-                    }
-                }
+                $count = mysqli_num_rows($result);
 
-                if ($result != null) {
+                if ($result != null && $count != 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
@@ -57,7 +48,9 @@
                     <hr>     
                     <?php
                     } 
-                }
+                } else {
+                    echo "<h1>No Posts found</h1>";
+                } 
             ?>
         </div>
         <!-- Blog Sidebar Widgets Column -->

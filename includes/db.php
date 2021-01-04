@@ -77,8 +77,6 @@ function remove_category($cat_id) {
 }
 
 function get_all_posts() {
-
-
     $query = "SELECT * FROM posts";
     global $connection; 
     $result = mysqli_query($connection, $query);
@@ -92,6 +90,18 @@ function get_all_posts() {
 
 function get_post_by_id($post_id) {
     $query = "SELECT * FROM posts WHERE post_id = '{$post_id}'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to Get Post from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
+function get_posts_by_cat($cat_id) {
+    $query = "SELECT * FROM posts WHERE post_cat_id = '{$cat_id}'";
     global $connection;
     $result = mysqli_query($connection, $query);
 
