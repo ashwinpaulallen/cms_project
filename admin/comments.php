@@ -13,22 +13,22 @@
                 <div class="col-lg-12">
                     
                     <?php 
-                        $s = '';
-                        if(isset($_GET['s'])) {
-                            $s = $_GET['s'];
-                        }
-                    
-                        switch($s) {
-                            case 'add_post':
-                                include "includes/addPost.php";
-                                break;
-                            case 'edit_post':
-                                include "includes/editPost.php";
-                                break;
-                            default:
+//                        $s = '';
+//                        if(isset($_GET['s'])) {
+//                            $s = $_GET['s'];
+//                        }
+//                    
+//                        switch($s) {
+//                            case 'add_post':
+//                                include "includes/addPost.php";
+//                                break;
+//                            case 'edit_post':
+//                                include "includes/editPost.php";
+//                                break;
+//                            default:
                                 include "includes/viewAllComments.php";
-                                break;
-                        }
+//                                break;
+//                        }
                     ?>
                 </div>
             </div>
