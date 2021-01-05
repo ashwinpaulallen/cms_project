@@ -32,5 +32,6 @@ function search_blog($search) {
 include_once "database_query/posts_db.php";
 include_once "database_query/categories_db.php";
 include_once "database_query/comments_db.php";
+include_once "database_query/users_db.php";
 
 ?>
