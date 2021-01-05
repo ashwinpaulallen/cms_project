@@ -39,9 +39,16 @@ if(isset($_GET['id'])) {
         <label for="author">Author</label>
         <input type="text" class="form-control" value="<?php echo $row['post_author'] ?>" name="author">
     </div>
-    <div class="form-group">
+    <div class="form-inline">
         <label for="status">Status</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_status'] ?>" name="status">
+        <input type="text" class="form-control" value="<?php echo $row['post_status'] ?>" readonly>
+        <label for="new status"> Change status to</label>
+        <select name="status" class="custom-select" id="inputGroupSelect01">
+          <option value="in review">Review</option>  
+          <option value="approved">Approved</option>  
+          <option value="rejected">Rejected</option>  
+        </select>
+
     </div>
     <label for="image">Image</label>
     <div class="form-group">

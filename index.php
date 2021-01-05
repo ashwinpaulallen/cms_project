@@ -22,7 +22,7 @@
                     $result = search_blog($search);
                     
                 } else { 
-                    $result = get_all_posts();
+                    $result = get_all_approved_posts();
                 }
                     
                 if ($result != null) {

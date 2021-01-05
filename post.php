@@ -22,6 +22,7 @@
                     $comment['content'] = $_POST['content'];
                     
                     add_comment($comment);
+                    update_comment_count($comment['post_id']);
                 }
             
             ?>

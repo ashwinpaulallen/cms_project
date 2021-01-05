@@ -9,7 +9,7 @@ if(isset($_POST['new_post'])) {
     $post['content'] = $_POST['content'];
     $post['tags'] = $_POST['tags'];
     $post['comment_count'] = 0;
-    $post['status'] = $_POST['status'];
+    $post['status'] = 'new';
     
     move_uploaded_file($post_image_temp, "../images/$post_image");
    
@@ -43,10 +43,6 @@ if(isset($_POST['new_post'])) {
     <div class="form-group">
         <label for="author">Author</label>
         <input type="text" class="form-control" name="author">
-    </div>
-    <div class="form-group">
-        <label for="status">Status</label>
-        <input type="text" class="form-control" name="status">
     </div>
     <div class="form-group">
         <label for="image">Image</label>
