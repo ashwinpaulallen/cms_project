@@ -38,12 +38,19 @@ if(isset($_GET['id'])) {
                 
     <div class="form-inline">
         <label for="status">Role</label>
+<!--
         <input type="text" class="form-control" value="<?php echo $row['role'] ?>" readonly>
         <label for="new status"> Change Role to</label>
+-->
         <select name="role" class="custom-select" id="inputGroupSelect01">
-          <option value="user">Choose Role</option>  
-          <option value="admin">Admin</option>  
-          <option value="user">Subscriber</option>  
+          <option value="<?php echo $row['role']; ?>"><?php echo $row['role']; ?></option>  
+          <?php 
+                if ($row['role'] == 'admin') {
+                    echo "<option value='user'>Subscriber</option>";
+                } else {
+                    echo "<option value='admin'>Admin</option>'";  
+                }           
+            ?>
         </select>
     </div>
     
