@@ -12,7 +12,13 @@
             
             <h1 class="page-header">
                 Page Heading
-                <small>Secondary Text</small>
+                <?php
+                    if(isset($_SESSION['firstname'])) {
+                        echo "<small>Welcome " . $_SESSION['firstname'] . "</small> ";
+                    } else {
+                        echo "<small>Secondary Text</small>";
+                    }
+                ?>
             </h1>
 
             <!-- First Blog Post -->
