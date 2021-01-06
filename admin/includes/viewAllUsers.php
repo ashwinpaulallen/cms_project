@@ -10,7 +10,7 @@
             <th class="text-center">Email</th>
             <th class="text-center">Role</th>
             <th class="text-center">Created</th>
-            <th class="text-center">image</th>
+            <th class="text-center">Image</th>
             <th class="text-center">Edit</th>
             <th class="text-center">Delete</th>                        
             </tr>
@@ -39,7 +39,7 @@
             <th class="text-center"><?php echo $user_email ?></th>
             <th class="text-center"><?php echo $user_role ?></th>
             <th class="text-center"><?php echo $user_created_date ?></th>
-            <th class="text-center"><?php echo $user_image ?></th>
+            <th class="text-center"><img width="100" src="../images/<?php echo $user_image ?>"></th>
             <td><a href="users.php?s=edit_user&id=<?php echo $user_id ?>" >Edit</a></td>
             <td><a href="users.php?delete=<?php echo $user_id ?>" >Remove</a></td>
 

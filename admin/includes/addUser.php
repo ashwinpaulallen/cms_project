@@ -40,12 +40,16 @@ if(isset($_POST['new_user'])) {
         <input type="password" class="form-control" name="password">
     </div>
     <div class="form-group">
-        <label for="image">Image</label>
+        <label for="image">Profile Picture</label>
         <input type="file" class="form-control" name="image">
     </div>
     <div class="form-group">
-        <label for="role">role</label>
-        <input type="text" class="form-control" name="role">
+       <label for="role">Role</label>
+        <select name="role" id="">
+            <option value="user">Select Role</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="new_user" value="Add User">

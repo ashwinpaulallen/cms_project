@@ -1,9 +1,9 @@
 '<?php 
 if(isset($_GET['id'])) {
 
-    $post_id = $_GET['id'];
+    $user_id = $_GET['id'];
 
-    $result = get_post_by_id($post_id);
+    $result = get_user_by_id($user_id);
 
     $row = mysqli_fetch_assoc($result);
 
@@ -12,62 +12,50 @@ if(isset($_GET['id'])) {
 <h1 class="page-header">Edit User</h1>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="id">Post ID</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_id']?>"name="id" readonly>
+        <label for="id">User ID</label>
+        <input type="text" class="form-control" value="<?php echo $row['user_id']?>"name="id" readonly>
     </div>
     <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_title']?>"name="title">
+        <label for="title">Username</label>
+        <input type="text" class="form-control" value="<?php echo $row['username']?>"name="username">
     </div>
     <div class="form-group">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Category</label>
-        
-        <select class="custom-select" id="inputGroupSelect01" name="cat_id" >
-            <?php 
-                $cat_result = get_all_category();
+        <label for="title">Password</label>
+        <input type="password" class="form-control" value="<?php echo $row['password']?>"name="password">
+    </div>
+    <div class="form-group">
+        <label for="author">First Name</label>
+        <input type="text" class="form-control" value="<?php echo $row['first_name'] ?>" name="first_name">
+    </div>
+    <div class="form-group">
+        <label for="author">Last Name</label>
+        <input type="text" class="form-control" value="<?php echo $row['last_name'] ?>" name="last_name">
+    </div>
+    <div class="form-group">
+        <label for="author">Email</label>
+        <input type="text" class="form-control" value="<?php echo $row['email'] ?>" name="email">
+    </div>
                 
-                while ($cat_row = mysqli_fetch_assoc($cat_result)) {
-                    echo "<option value='{$cat_row['cat_id']}'> {$cat_row['cat_title']} </option>";
-                
-                }
-            ?>
-        </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_author'] ?>" name="author">
-    </div>
     <div class="form-inline">
-        <label for="status">Status</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_status'] ?>" readonly>
-        <label for="new status"> Change status to</label>
-        <select name="status" class="custom-select" id="inputGroupSelect01">
-          <option value="in review">Review</option>  
-          <option value="approved">Approved</option>  
-          <option value="rejected">Rejected</option>  
+        <label for="status">Role</label>
+        <input type="text" class="form-control" value="<?php echo $row['role'] ?>" readonly>
+        <label for="new status"> Change Role to</label>
+        <select name="role" class="custom-select" id="inputGroupSelect01">
+          <option value="user">Choose Role</option>  
+          <option value="admin">Admin</option>  
+          <option value="user">Subscriber</option>  
         </select>
-
     </div>
-    <label for="image">Image</label>
+    
     <div class="form-group">
-        
-        <img width="200" src="../images/<?php echo $row['post_image']?>">        
+       <label for="image">Image</label>
+        <img width="200" src="../images/<?php echo $row['image']?>">        
     </div>
     <div class="form-group">
         <input type="file" class="form-control" name="image">
     </div>
     <div class="form-group">
-        <label for="tags">Tags</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_tags'] ?>" name="tags">
-    </div>
-    <div class="form-group">
-        <label for="content">Content</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_content'] ?>" name="content">
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="edit_post" value="Update Post">
+        <input type="submit" class="btn btn-primary" name="edit_user" value="Update User">
     </div>
 </form>
 
@@ -75,22 +63,21 @@ if(isset($_GET['id'])) {
 <?php } ?> 
 
 <?php 
-    if(isset($_POST['edit_post'])) {
-        $post['post_id'] = $_POST['id'];
-        $post['cat_id'] = $_POST['cat_id'];
-        $post['title'] = $_POST['title'];
-        $post['author'] = $_POST['author'];
-        $post_image = $_FILES['image']['name'];
-        $post['image'] = $post_image;
-        $post_image_temp = $_FILES['image']['tmp_name'];
-        $post['content'] = $_POST['content'];
-        $post['tags'] = $_POST['tags'];
-        $post['comment_count'] = 0;
-        $post['status'] = $_POST['status'];
+    if(isset($_POST['edit_user'])) {
+        $user['user_id'] = $_POST['id'];
+        $user['first_name'] = $_POST['first_name'];
+        $user['last_name'] = $_POST['last_name'];
+        $user['email'] = $_POST['email'];
+        $user['username'] = $_POST['username'];
+        $user['password'] = $_POST['password'];
+        $user_image = $_FILES['image']['name'];
+        $user['image'] = $user_image;
+        $user_image_temp = $_FILES['image']['tmp_name'];
+        $user['role'] = $_POST['role'];
+    
+        move_uploaded_file($user_image_temp, "../images/$user_image");
         
-        move_uploaded_file($post_image_temp, "../images/$post_image");
-        
-        update_post($post);
+        update_user($user);
         
     }
 
