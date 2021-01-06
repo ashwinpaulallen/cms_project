@@ -41,12 +41,19 @@ if(isset($_GET['id'])) {
     </div>
     <div class="form-inline">
         <label for="status">Status</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_status'] ?>" readonly>
-        <label for="new status"> Change status to</label>
         <select name="status" class="custom-select" id="inputGroupSelect01">
-          <option value="in review">Review</option>  
-          <option value="approved">Approved</option>  
-          <option value="rejected">Rejected</option>  
+          <option value="<?php echo $row['post_status'] ?>"><?php echo $row['post_status'] ?></option>
+          <?php
+          if ($row['post_status'] == 'approved')  {
+                   echo "<option value='rejected'>Reject</option>";  
+           } else if ($row['post_status'] == 'rejected'){
+                echo "<option value='approved'>Approve</option>"; 
+
+           } else {
+                echo "<option value='rejected'>Reject</option>";  
+                echo "<option value='approved'>Approve</option>";
+          }
+            ?>
         </select>
 
     </div>
