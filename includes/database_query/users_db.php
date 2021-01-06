@@ -1,5 +1,5 @@
 <?php
-    function get_all_users() {
+function get_all_users() {
 
     $query = "SELECT * FROM users";
     global $connection;
@@ -78,6 +78,31 @@ function remove_user($user_id) {
         header("Location: users.php");
     }
 }
+
+function validate_login($username, $password) {
+    global $connection;
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+    
+     $query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
+    
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Delete Post to database' . mysqli_error($connection));
+    }
+    
+    $count = mysqli_num_rows($result);
+    
+    if ($count == 0) {
+        return null;
+    }
+    
+    return $result;
+}
+
+
+
 
 
 ?>
