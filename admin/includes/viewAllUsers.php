@@ -1,4 +1,3 @@
-<?php include "functions.php" ?>
 <h1 class="page-header">All Users</h1>
 <table class="table table-bordered table-hover">
     <thead>

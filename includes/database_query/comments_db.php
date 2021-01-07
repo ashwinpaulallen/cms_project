@@ -72,16 +72,4 @@ function unapprove_comment($comment_id) {
     }
 }
 
-function get_comment_count() {
-    $query = "SELECT COUNT(*) as total FROM comments";
-    global $connection;
-    $result = mysqli_query($connection, $query);
-    
-    if(!$result) {
-        die('Unable to Get Post Count from database' . mysqli_error($connection));
-    }
-    $data=mysqli_fetch_assoc($result);
-    $count = $data['total'];
-    return $count;
-}
 ?>

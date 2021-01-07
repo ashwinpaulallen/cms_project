@@ -116,17 +116,4 @@ function remove_post($post_id) {
     }
 }
 
-function get_post_count() {
-    $query = "SELECT COUNT(*) as total FROM posts";
-    global $connection;
-    $result = mysqli_query($connection, $query);
-    
-    if(!$result) {
-        die('Unable to Get Post Count from database' . mysqli_error($connection));
-    }
-    $data=mysqli_fetch_assoc($result);
-    $count = $data['total'];
-    return $count;
-}
-
 ?>
