@@ -27,9 +27,41 @@ function get_post_count() {
     return $count;
 }
 
+function get_approved_post_count() {
+    $result = get_all_approved_posts();
+    
+    $count=mysqli_num_rows($result);
+    
+    return $count;
+}
+
+function get_unapproved_post_count() {
+    $result = get_all_unapproved_posts();
+    
+    $count=mysqli_num_rows($result);
+    
+    return $count;
+}
+
 function get_comment_count() {
     $result = get_all_comments();
     $count=mysqli_num_rows($result);
+    return $count;
+}
+
+function get_approved_comment_count() {
+    $result = get_all_approved_comments();
+    
+    $count=mysqli_num_rows($result);
+    
+    return $count;
+}
+
+function get_unapproved_comment_count() {
+    $result = get_all_unapproved_comments();
+    
+    $count=mysqli_num_rows($result);
+    
     return $count;
 }
 
@@ -38,4 +70,5 @@ function get_category_count() {
     $count=mysqli_num_rows($result);
     return $count;
 }
+
 ?>

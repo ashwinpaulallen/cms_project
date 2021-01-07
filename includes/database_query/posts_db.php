@@ -24,6 +24,18 @@ function get_all_approved_posts() {
     return $result;
 }
 
+function get_all_unapproved_posts() {
+    $query = "SELECT * FROM posts WHERE post_status != 'approved'";
+    global $connection; 
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to retrieve all posts from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
 function get_post_by_id($post_id) {
     $query = "SELECT * FROM posts WHERE post_id = '{$post_id}'";
     global $connection;
