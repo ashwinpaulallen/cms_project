@@ -30,19 +30,21 @@
                 $comment_status = $row['comment_status'];
                 
                 $post = get_post_by_id($comment_post_id);
-                $row = mysqli_fetch_assoc($post);
+                while ($post_row = mysqli_fetch_assoc($post)) {
+                    $post_title = $post_row['post_title'];
+                }
         ?>
         <tr >
-            <th class="text-center"><?php echo $comment_id ?></th>
-            <th class="text-center"><?php echo $comment_author ?></th>
-            <th class="text-center"><?php echo $comment_email ?></th>
-            <th class="text-center"><?php echo $comment_content ?></th>
-            <th class="text-center"><?php echo $comment_date ?></th>
-            <th class="text-center"><?php echo $comment_status ?></th>
-            <td><a href="../post.php?id=<?php echo $comment_post_id ?>" ><?php echo $row['post_title']?></a></td>
-            <td><a href="comments.php?approve=<?php echo $comment_id ?>" >Approve</a></td>
-            <td><a href="comments.php?unapprove=<?php echo $comment_id ?>" >UnApprove</a></td>
-            <td><a href="comments.php?delete=<?php echo $comment_id ?>" >Remove</a></td>
+            <th class="text-center"><?php echo $comment_id; ?></th>
+            <th class="text-center"><?php echo $comment_author; ?></th>
+            <th class="text-center"><?php echo $comment_email; ?></th>
+            <th class="text-center"><?php echo $comment_content; ?></th>
+            <th class="text-center"><?php echo $comment_date; ?></th>
+            <th class="text-center"><?php echo $comment_status; ?></th>
+            <td><a href="../post.php?id=<?php echo $comment_post_id; ?>" ><?php echo $post_title;?></a></td>
+            <td><a href="comments.php?approve=<?php echo $comment_id; ?>" >Approve</a></td>
+            <td><a href="comments.php?unapprove=<?php echo $comment_id; ?>" >UnApprove</a></td>
+            <td><a href="comments.php?delete=<?php echo $comment_id; ?>" >Remove</a></td>
 
         </tr>
         <?php }

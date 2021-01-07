@@ -131,7 +131,18 @@ function validate_login($username, $password) {
     return $result;
 }
 
-
+function get_user_count() {
+    $query = "SELECT COUNT(*) as total FROM users";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Get Post Count from database' . mysqli_error($connection));
+    }
+    $data=mysqli_fetch_assoc($result);
+    $count = $data['total'];
+    return $count;
+}
 
 
 

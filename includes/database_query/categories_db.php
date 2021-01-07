@@ -61,4 +61,17 @@ function remove_category($cat_id) {
     }
 }
 
+function get_category_count() {
+    $query = "SELECT COUNT(*) as total FROM categories";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    
+    if(!$result) {
+        die('Unable to Get Post Count from database' . mysqli_error($connection));
+    }
+    $data=mysqli_fetch_assoc($result);
+    $count = $data['total'];
+    return $count;
+}
+
 ?>
