@@ -55,13 +55,6 @@ if(isset($_GET['id'])) {
     </div>
     
     <div class="form-group">
-       <label for="image">Image</label>
-        <img width="200" src="../images/<?php echo $row['image']?>">        
-    </div>
-    <div class="form-group">
-        <input type="file" class="form-control" name="image">
-    </div>
-    <div class="form-group">
         <input type="submit" class="btn btn-primary" name="edit_user" value="Update User">
     </div>
 </form>
@@ -77,13 +70,8 @@ if(isset($_GET['id'])) {
         $user['email'] = $_POST['email'];
         $user['username'] = $_POST['username'];
         $user['password'] = $_POST['password'];
-        $user_image = $_FILES['image']['name'];
-        $user['image'] = $user_image;
-        $user_image_temp = $_FILES['image']['tmp_name'];
         $user['role'] = $_POST['role'];
     
-        move_uploaded_file($user_image_temp, "../images/$user_image");
-        
         update_user($user);
         
     }

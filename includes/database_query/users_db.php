@@ -24,6 +24,18 @@ function get_user_by_id($user_id) {
     return $result;
 }
 
+function get_user_by_username($username) {
+    $query = "SELECT * FROM users WHERE username = '{$username}'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to Get Post from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
 function add_user($user) {
     $query = "INSERT INTO users(username, password, first_name, last_name, role, email, created_date, image) VALUES";
     $query .= "('{$user['username']}','{$user['password']}','{$user['first_name']}','{$user['last_name']}','{$user['role']}','{$user['email']}',now(),'{$user['image']}')";
@@ -39,14 +51,6 @@ function add_user($user) {
 }
 
 function update_user($user) {
-    if (empty($user['image'])) {
-        $cur_user = get_user_by_id($user['user_id']);
-        $row = mysqli_fetch_assoc($cur_user);
-        
-        $user_image = $row['image'];
-    } else {
-        $user_image = $user['image'];
-    }
     
     $query = "UPDATE users SET ";
     $query .= "username = '{$user['username']}', ";
@@ -54,8 +58,7 @@ function update_user($user) {
     $query .= "first_name = '{$user['first_name']}', ";
     $query .= "last_name = '{$user['last_name']}', ";
     $query .= "role = '{$user['role']}', ";
-    $query .= "email = '{$user['email']}', ";
-    $query .= "image = '{$user_image}' ";
+    $query .= "email = '{$user['email']}' ";
     $query .= "WHERE user_id = '{$user['user_id']}'";
 
     global $connection;
@@ -64,6 +67,33 @@ function update_user($user) {
         die('Unable to Update post in database' . mysqli_error($connection));
     } else {
        header("Location: users.php");
+    }
+}
+
+function update_user_profile($user) {
+    if (empty($user['image'])) {
+        $cur_user = get_user_by_username($user['username']);
+        $row = mysqli_fetch_assoc($cur_user);
+        
+        $user_image = $row['image'];
+    } else {
+        $user_image = $user['image'];
+    }
+    
+    $query = "UPDATE users SET ";
+    $query .= "password = '{$user['password']}', ";
+    $query .= "first_name = '{$user['first_name']}', ";
+    $query .= "last_name = '{$user['last_name']}', ";
+    $query .= "email = '{$user['email']}', ";
+    $query .= "image = '{$user_image}' ";
+    $query .= "WHERE username = '{$user['username']}'";
+
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        die('Unable to Update post in database' . mysqli_error($connection));
+    } else {
+       header("Location: profiles.php");
     }
 }
 
