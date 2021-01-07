@@ -16,7 +16,7 @@
         </form>
         <!-- /.input-group -->
     </div>
-    
+    <?php if (!isset($_SESSION['username'])) { ?>
     <div class="well">
         <h4>Login</h4>
         <form action="includes/login.php" method="post">
@@ -33,7 +33,7 @@
             </div>
         </form>
     </div>
-
+    <?php }?>
     <!-- Blog Categories Well -->
     <div class="well">
         <h4>Blog Categories</h4>
