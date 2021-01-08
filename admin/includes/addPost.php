@@ -54,7 +54,7 @@ if(isset($_POST['new_post'])) {
     </div>
     <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" class="form-control" name="content">
+        <input type="text" class="form-control" name="content" id="body">
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="new_post" value="Publish Post">

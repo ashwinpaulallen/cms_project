@@ -129,10 +129,10 @@
                                 $admin_count = get_admin_count();
                                 $subscriber_count = get_subscriber_count();
                             
-                                $element_text = ['Posts', 'Unapproved Posts','Comments', 'Unapproved Comments', 'Subscribers', 'Admin', 'Categories'];
-                                $element_value = [$post_count, $unapproved_post, $comment_count, $unapproved_comments, $subscriber_count, $admin_count, $cat_count];
+                                $element_text = ['TotalPosts', 'Approved Posts', 'Unapproved Posts','Total Comments', 'Approved Comments', 'Unapproved Comments', 'Subscribers', 'Admin', 'Categories'];
+                                $element_value = [$post_count, $approved_post, $unapproved_post, $comment_count,$approved_comments, $unapproved_comments, $subscriber_count, $admin_count, $cat_count];
 
-                                for ($i = 0; $i < 7; $i++) {
+                                for ($i = 0; $i < 8; $i++) {
                                     echo "['{$element_text[$i]}', {$element_value[$i]}],";
                                 }
                             ?>
