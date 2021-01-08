@@ -13,8 +13,20 @@ function get_category_title_by_id($cat_id) {
     return $title;
 } 
 
+function get_admin_count() {
+    $result = get_all_admin();
+    $count=mysqli_num_rows($result);
+    return $count;
+}
+
 function get_user_count() {
     $result = get_all_users();
+    $count=mysqli_num_rows($result);
+    return $count;
+}
+
+function get_subscriber_count() {
+    $result = get_all_subscribers();
     $count=mysqli_num_rows($result);
     return $count;
 }

@@ -117,24 +117,24 @@
                 <script type="text/javascript">
                     google.charts.load('current', {'packages':['bar']});
                     google.charts.setOnLoadCallback(drawChart);
-//                    function drawChart() {
-//        var data = google.visualization.arrayToDataTable([
-//          ['Data', 'Total', 'Approved', 'Pending'],
-//          ['Posts', 5, 4, 1]
-//        ]);
+
                     function drawChart() {
                         var data = google.visualization.arrayToDataTable([
-                            ['Data', 'Total', 'Approved', 'Pending'],
+                            ['Data','Count'],
                             <?php
                                 $approved_post = get_approved_post_count();
                                 $unapproved_post = get_unapproved_post_count();
                                 $approved_comments = get_approved_comment_count();
                                 $unapproved_comments = get_unapproved_comment_count();
-                                $element_text = ['Posts', 'Comments', 'Users', 'Categories'];
-                                echo "['{$element_text[0]}', {$post_count}, {$approved_post}, {$unapproved_post}],";
-                                echo "['{$element_text[1]}', {$comment_count}, {$approved_comments}, {$unapproved_comments}],";
-                                echo "['{$element_text[2]}', {$user_count}, 0, 0],";
-                                echo "['{$element_text[3]}', {$cat_count}, 0,0]";
+                                $admin_count = get_admin_count();
+                                $subscriber_count = get_subscriber_count();
+                            
+                                $element_text = ['Posts', 'Unapproved Posts','Comments', 'Unapproved Comments', 'Subscribers', 'Admin', 'Categories'];
+                                $element_value = [$post_count, $unapproved_post, $comment_count, $unapproved_comments, $subscriber_count, $admin_count, $cat_count];
+
+                                for ($i = 0; $i < 7; $i++) {
+                                    echo "['{$element_text[$i]}', {$element_value[$i]}],";
+                                }
                             ?>
                         ]);
 

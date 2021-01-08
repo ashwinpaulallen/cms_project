@@ -12,6 +12,32 @@ function get_all_users() {
     return $result;
 }
 
+function get_all_admin() {
+
+    $query = "SELECT * FROM users WHERE role = 'admin'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to retrieve all category from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
+function get_all_subscribers() {
+
+    $query = "SELECT * FROM users WHERE role != 'admin'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+        die('Unable to retrieve all category from database' . mysqli_error($connection));
+    }
+    
+    return $result;
+}
+
 function get_user_by_id($user_id) {
     $query = "SELECT * FROM users WHERE user_id = '{$user_id}'";
     global $connection;
