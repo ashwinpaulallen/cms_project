@@ -15,7 +15,7 @@ if(isset($_POST['checkBoxArray'])) {
 <h1 class="page-header">All Posts</h1>
 <form action="" method="post">
     <table class="table table-bordered table-hover">
-       <div id="bulkOptionsContainer" class="col-xs-4">
+       <div id="bulkOptionsContainer" class="col-xs-4 form-group">
            <select class="form-control" name="bulk_status" id="">
                <option value="">Select Option</option>
                <option value="approved">Publish</option>
@@ -23,8 +23,8 @@ if(isset($_POST['checkBoxArray'])) {
                <option value="rejected">Reject</option>
            </select>
         </div>
-           <div class="col-xs-4">
-              <input type="submit" class="btn btn-success" value="apply">
+           <div class="col-xs-4 form-group">
+               <input type="submit" class="btn btn-success" value="Apply">
                <a class="btn btn-primary" href="posts.php?s=add_post">Add New</a>
            </div>
         <thead>
