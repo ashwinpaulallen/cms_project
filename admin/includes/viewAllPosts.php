@@ -40,8 +40,8 @@ if(isset($_POST['checkBoxArray'])) {
                 <th class="text-center">Tags</th>
                 <th class="text-center">Comments Count</th>
                 <th class="text-center">Status</th>   
-                <th class="text-center">Delete</th>                        
-                <th class="text-center">Modify</th>                        
+                <th class="text-center">Modify</th>  
+                <th class="text-center">Delete</th>                                              
             </tr>
         </thead>
         <tbody class="text-center">
@@ -66,7 +66,7 @@ if(isset($_POST['checkBoxArray'])) {
                 <th class="text-center"><input type="checkbox" class="checkBoxes" name="checkBoxArray[]" value="<?php echo $post_id ?>"></th>
                 <th class="text-center"><?php echo $post_id ?></th>
                 <th class="text-center"><?php echo $post_cat_id ?></th>
-                <th class="text-center"><?php echo $post_title ?></th>
+                <th class="text-center"><a href="../post.php?id=<?php echo $post_id ?>"><?php echo $post_title ?> </a></th>
                 <th class="text-center"><?php echo $post_author ?></th>
                 <th class="text-center"><?php echo $post_date ?></th>
                 <th class="text-center"><img width="100" src="../images/<?php echo $post_image ?>"></th>
@@ -74,8 +74,9 @@ if(isset($_POST['checkBoxArray'])) {
                 <th class="text-center"><?php echo $post_tags ?></th>
                 <th class="text-center"><?php echo $post_comment_count ?></th>
                 <th class="text-center"><?php echo $post_status ?></th>
-                <td><a href="posts.php?delete=<?php echo $post_id ?>" >Remove</a></td>
                 <td><a href="posts.php?s=edit_post&id=<?php echo $post_id ?>" >Edit</a></td>
+                <td><a href="posts.php?delete=<?php echo $post_id ?>" >Remove</a></td>
+
 
             </tr>
             <?php }

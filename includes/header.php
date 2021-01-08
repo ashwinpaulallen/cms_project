@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();?>
+<?php include "admin/includes/functions.php"?>
 <html lang="en">
 
 <head>

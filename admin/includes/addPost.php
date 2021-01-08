@@ -12,7 +12,7 @@ if(isset($_POST['new_post'])) {
     $post['status'] = 'new';
     
     move_uploaded_file($post_image_temp, "../images/$post_image");
-   
+
     add_post($post);
     
 }
@@ -54,7 +54,7 @@ if(isset($_POST['new_post'])) {
     </div>
     <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" class="form-control" name="content" id="body">
+        <textarea class="form-control" name="content" id="body" cols="30" rows="10"></textarea>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="new_post" value="Publish Post">

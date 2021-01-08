@@ -83,4 +83,9 @@ function get_category_count() {
     return $count;
 }
 
+function function_alert($message) { 
+      
+    // Display the alert box  
+    echo "<script>alert('$message');</script>"; 
+} 
 ?>

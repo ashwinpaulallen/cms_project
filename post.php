@@ -20,9 +20,12 @@
                     $comment['author'] = $_POST['author'];
                     $comment['email'] = $_POST['email'];
                     $comment['content'] = $_POST['content'];
-                    
-                    add_comment($comment);
-                    update_comment_count($comment['post_id']);
+                    if (!empty($comment['email']) && !empty($comment['author']) && !empty($comment['content'])) {                    
+                        add_comment($comment);
+                        update_comment_count($comment['post_id']);
+                    } else {
+                        function_alert("Fields cannot be Empty!!!");
+                    }
                 }
             
             ?>

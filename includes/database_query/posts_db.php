@@ -70,7 +70,8 @@ function add_post($post) {
     if(!$result) {
         die('Unable to add post to database' . mysqli_error($connection));
     } else {
-        header("Location: posts.php");
+        $new_post_id = mysqli_insert_id($connection);
+        header("Location: ../post.php?id={$new_post_id}");
     }
 }
 

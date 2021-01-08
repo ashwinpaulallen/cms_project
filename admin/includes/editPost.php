@@ -71,7 +71,7 @@ if(isset($_GET['id'])) {
     </div>
     <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_content'] ?>" cols="30" rows="10" name="content" id="body" >
+        <textarea class="form-control"  name="content" cols="30" rows="10" id="body"><?php echo $row['post_content'] ?></textarea>
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="edit_post" value="Update Post">

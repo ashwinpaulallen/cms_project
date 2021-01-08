@@ -36,7 +36,7 @@ if(isset($_GET['id'])) {
         <input type="text" class="form-control" value="<?php echo $row['email'] ?>" name="email">
     </div>
                 
-    <div class="form-inline">
+    <div class="form-group">
         <label for="status">Role</label>
 <!--
         <input type="text" class="form-control" value="<?php echo $row['role'] ?>" readonly>
