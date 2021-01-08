@@ -23,7 +23,7 @@ if(isset($_GET['id'])) {
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
         
-        <select class="custom-select" id="inputGroupSelect01" name="cat_id" >
+        <select class="custom-select form-control" id="inputGroupSelect01" name="cat_id" >
             <?php 
                 $cat_result = get_all_category();
                 
@@ -39,9 +39,9 @@ if(isset($_GET['id'])) {
         <label for="author">Author</label>
         <input type="text" class="form-control" value="<?php echo $row['post_author'] ?>" name="author">
     </div>
-    <div class="form-inline">
+    <div class="form-group">
         <label for="status">Status</label>
-        <select name="status" class="custom-select" id="inputGroupSelect01">
+        <select name="status" class="custom-select form-control" id="inputGroupSelect01">
           <option value="<?php echo $row['post_status'] ?>"><?php echo $row['post_status'] ?></option>
           <?php
           if ($row['post_status'] == 'approved')  {
@@ -71,7 +71,7 @@ if(isset($_GET['id'])) {
     </div>
     <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" class="form-control" value="<?php echo $row['post_content'] ?>" name="content">
+        <input type="text" class="form-control" value="<?php echo $row['post_content'] ?>" cols="30" rows="10" name="content" id="body" >
     </div>
     <div class="form-group">
         <input type="submit" class="btn btn-primary" name="edit_post" value="Update Post">

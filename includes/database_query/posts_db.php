@@ -74,6 +74,17 @@ function add_post($post) {
     }
 }
 
+function update_status($post_id, $post_status) {
+    $query = "UPDATE posts SET post_status = '{$post_status}' WHERE post_id = '{$post_id}'";
+    global $connection;
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        die('Unable to Update post status in database ' . mysqli_error($connection));
+    } else {
+       header("Location: posts.php");
+    }
+}
+
 function update_post($post) {
     if (empty($post['image'])) {
         $cur_post = get_post_by_id($post['post_id']);

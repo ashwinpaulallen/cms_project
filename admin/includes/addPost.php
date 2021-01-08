@@ -28,7 +28,7 @@ if(isset($_POST['new_post'])) {
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
         
-        <select class="custom-select" id="inputGroupSelect01" name="cat_id" >
+        <select class="custom-select form-control" id="inputGroupSelect01" name="cat_id" >
             <?php 
                 $cat_result = get_all_category();
                 

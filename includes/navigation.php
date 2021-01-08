@@ -32,6 +32,20 @@
               <?php if($_SESSION['role'] == 'admin') { ?>
                <li> <a href="admin">Admin</a> </li>
                <?php } ?>
+               
+               <?php
+                if(isset($_SESSION['firstname'])) {
+                    if(isset($_GET['id'])) {
+                        $p_id = $_GET['id'];
+                        $post = get_post_by_id($p_id);
+                        $row = mysqli_fetch_assoc($post);
+                        if ($_SESSION['firstname'] == $row['post_author']) {
+                            echo "<li><a href='admin/posts.php?s=edit_post&id={$p_id}'> Edit Post</a></li>";
+                        }
+                    }
+                }
+                
+                ?>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];?> <b class="caret"></b></a>
                 <ul class="dropdown-menu sub_nav">
