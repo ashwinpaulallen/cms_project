@@ -30,6 +30,18 @@
                 } else { 
                     $result = get_all_approved_posts();
                 }
+            
+                if(isset($_POST['login_submit'])) {
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    if (!empty($username) || !empty($password)) {
+                        include "includes/login.php";
+                    } else {
+                        $message = 'Username/Password cannot be Empty!!';
+                    }
+                } else {
+                    $message = '';
+                }
                     
                 if ($result != null) {
                     $count = mysqli_num_rows($result);

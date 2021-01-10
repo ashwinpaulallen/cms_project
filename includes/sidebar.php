@@ -18,8 +18,9 @@
     </div>
     <?php if (!isset($_SESSION['username'])) { ?>
     <div class="well">
-        <h4>Login</h4>
-        <form action="includes/login.php" method="post">
+        <h4>Login/Registration</h4>
+        <h6><?php echo $message; ?></h6>
+        <form action="" method="post">
            <div class="form-group">
 <!--                <label for="username">Username</label>-->
                 <input name="username" type="text" class="form-control" placeholder="Enter Username">
@@ -30,6 +31,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" name="login_submit" type="submit" > Login </button>
+                <a class="btn btn-primary" href="registration.php">Registration</a>
             </div>
         </form>
     </div>
