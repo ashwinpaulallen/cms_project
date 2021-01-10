@@ -75,7 +75,7 @@ if(isset($_POST['checkBoxArray'])) {
                 <th class="text-center"><?php echo $post_comment_count ?></th>
                 <th class="text-center"><?php echo $post_status ?></th>
                 <td><a href="posts.php?s=edit_post&id=<?php echo $post_id ?>" >Edit</a></td>
-                <td><a href="posts.php?delete=<?php echo $post_id ?>" >Remove</a></td>
+                <td><a onClick="javascript: return confirm('Confirm Delete');" href="posts.php?delete=<?php echo $post_id ?>" >Remove</a></td>
 
 
             </tr>
